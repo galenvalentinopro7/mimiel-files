@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-container {
+            width: 90%;
+            max-width: 800px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+<h2>mimiel files </h2>
+
+<div id="imageContainer" class="image-container"></div>
+
+<script>
+    // 🔥 LUAU-STYLE TABLE (JS ARRAY)
+    const images = [
+        "https://media.discordapp.net/attachments/1447865920000360511/1475823065177788486/mimiel_files_page_10b.png?ex=699ee2d6&is=699d9156&hm=46766a128b2a57e464ad84f9512553c9582db03ac180b8bdbaa2263297fc6408&=&format=webp&quality=lossless&width=827&height=465",
+        "https://media.discordapp.net/attachments/1447865920000360511/1475823065819779134/mimiel_files_page_1m.png?ex=699ee2d6&is=699d9156&hm=5416391485086072c2591dde33988f172e510f426490ffc43a0d96fcec4bc91c&=&format=webp&quality=lossless&width=820&height=465",
+        "https://media.discordapp.net/attachments/1447865920000360511/1475823066482475058/mimiel_files.png?ex=699ee2d6&is=699d9156&hm=7c143d6955b006d5b74b4bde014e1b9bddf0e97968ecac662fb059ea65c357ca&=&format=webp&quality=lossless&width=705&height=465"
+    ];
+
+    const container = document.getElementById("imageContainer");
+
+    function renderImages() {
+        container.innerHTML = ""; // Clear everything
+
+        images.forEach(function(url) {
+            const img = document.createElement("img");
+            img.src = url;
+            container.appendChild(img);
+        });
+    }
+
+    // Initial render
+    renderImages();
+
+    // 🛡️ Auto re-render if someone removes images
+    setInterval(() => {
+        if (container.children.length !== images.length) {
+            renderImages();
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
